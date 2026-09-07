@@ -207,7 +207,7 @@ final class ClipboardModel: ObservableObject {
         }
         startNewProject()
         projectNameDraft = "官网改版"
-        baselineDraft = "本期制作首页桌面版和价格页，首页方向确认后再开发。"
+        baselineDraft = "本期制作官网桌面端首页和价格页，周五交第一版。"
         status = "这是固定效果示例，先保存当前项目约定"
     }
 

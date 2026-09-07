@@ -5,13 +5,17 @@ enum PrototypeEngine {
     static func compareRequirements(confirmedScope: String,
                                     newMessage: String) -> RequirementComparisonResult {
         RequirementComparisonResult(
-            summary: "客户新增了移动端适配，并明确取消价格页；首页的“高级感”仍没有验收标准。",
-            added: ["首页增加移动端适配"],
-            changed: ["首页从只做桌面版，改为同时覆盖移动端"],
-            removed: ["本期不再制作价格页"],
-            unclear: ["“更高级”的具体参考和验收标准是什么？"],
-            updatedScope: "本期制作首页的桌面版和移动端；价格页取消。首页视觉需要更高级，但具体参考和验收标准待确认。",
-            confirmationReply: "收到，我确认一下：这次新增首页移动端，价格页本期取消；首页还需要调整得更高级。为避免方向做偏，麻烦再确认一下“更高级”以哪张参考或哪项标准为准？",
+            summary: "客户新增了移动端适配和后台导出，但仍要求周五一起交付。",
+            added: ["官网增加移动端适配", "后台增加数据导出"],
+            changed: ["原约定只做桌面端，现在增加移动端和后台功能"],
+            removed: [],
+            unclear: [
+                "移动端需要覆盖哪些页面和交互？",
+                "后台要导出哪些数据、使用什么格式？",
+                "增加两项工作后，周五交付时间是否仍然不变？"
+            ],
+            updatedScope: "本期制作官网桌面端首页和价格页；新增移动端适配与后台数据导出。移动端覆盖范围、导出内容与格式、交付时间待确认。",
+            confirmationReply: "收到，我先确认一下：原来定的是官网桌面端首页和价格页；这次新增移动端适配和后台数据导出。麻烦再确认移动端要覆盖哪些页面、后台要导出哪些数据和格式。工作量确认后，我再同步调整后的时间和报价。",
             addedCommitments: []
         )
     }
