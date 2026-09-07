@@ -1,0 +1,11 @@
+{
+  "product": "Lydia · 别返工",
+  "version": "0.1.0",
+  "local_app": "/Users/macmini/Documents/ChatGPT/我的口播视频/outputs/biefangong-desktop/build/v0.1.0/别返工.app",
+  "artifact_type": "local-functional-candidate",
+  "architecture": "arm64",
+  "minimum_macos": "13.0",
+  "signature": "ad-hoc",
+  "notarized": false,
+  "public_release": false
+}
