@@ -26,8 +26,6 @@ final class ClipboardModel: ObservableObject {
     var onResult: (() -> Void)?
 
     private var task: Task<Void, Never>?
-    private var lastClipboardCount = -1
-    private var lastCopiedText = ""
 
     init() {
         let savedProjects = RequirementProjectStore.load()
@@ -80,25 +78,6 @@ final class ClipboardModel: ObservableObject {
             status = "已接住客户的新消息"
         }
         return true
-    }
-
-    func refreshClipboard() {
-        let board = NSPasteboard.general
-        guard board.changeCount != lastClipboardCount else { return }
-        lastClipboardCount = board.changeCount
-        guard let raw = board.string(forType: .string) else { return }
-        let text = PromptBuilder.normalize(raw)
-        guard !text.isEmpty, !PromptBuilder.isGeneratedTask(text), text != lastCopiedText else { return }
-
-        if currentProject == nil {
-            guard text != baselineDraft else { return }
-            baselineDraft = text
-        } else {
-            guard text != newMessage else { return }
-            newMessage = text
-            clearComparison()
-        }
-        status = ""
     }
 
     func startNewProject() {
@@ -237,8 +216,6 @@ final class ClipboardModel: ObservableObject {
         let board = NSPasteboard.general
         board.clearContents()
         if board.setString(text, forType: .string) {
-            lastCopiedText = text
-            lastClipboardCount = board.changeCount
             status = "已复制，回到聊天里粘贴即可"
         }
     }

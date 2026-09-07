@@ -135,14 +135,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         show(capture: true)
     }
     private func show(capture: Bool) {
-        if capture {
-            if model.comparison == nil && !model.isWorking,
-               let current = NSWorkspace.shared.frontmostApplication,
-               current.bundleIdentifier != Bundle.main.bundleIdentifier {
-                returnApplication = current
-                returnTarget = ReplyTarget.capture(current)
-            }
-            model.refreshClipboard()
+        if capture,
+           model.comparison == nil && !model.isWorking,
+           let current = NSWorkspace.shared.frontmostApplication,
+           current.bundleIdentifier != Bundle.main.bundleIdentifier {
+            returnApplication = current
+            returnTarget = ReplyTarget.capture(current)
         }
         NSApp.activate(ignoringOtherApps: true); panel.makeKeyAndOrderFront(nil)
     }
