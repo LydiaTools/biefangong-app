@@ -187,7 +187,7 @@ final class ClipboardModel: ObservableObject {
         startNewProject()
         projectNameDraft = "官网改版"
         baselineDraft = "本期制作官网桌面端首页和价格页，周五交第一版。"
-        status = "这是固定效果示例，先保存当前项目约定"
+        status = "已载入一个常见接单场景，先保存当前项目约定"
     }
 
     @discardableResult
@@ -207,7 +207,7 @@ final class ClipboardModel: ObservableObject {
     func forgetServiceKey() {
         DeepSeekCredentialStore.delete()
         serviceConfigured = false
-        status = "已断开开发用 AI，现在只能看固定效果示例"
+        status = "已断开开发用 AI，将继续使用本机核对"
     }
 
     func dismissServiceSetup() {}
@@ -232,7 +232,7 @@ final class ClipboardModel: ObservableObject {
         errorMessage = nil
         clearComparison()
         isWorking = true
-        status = "固定效果原型 · 正在核对本次变更…"
+        status = "正在本机核对这次变更…"
         let message = newMessage
         task = Task {
             try? await Task.sleep(nanoseconds: 420_000_000)
@@ -243,7 +243,7 @@ final class ClipboardModel: ObservableObject {
             )
             comparison = result
             confirmationReply = result.confirmationReply
-            status = "固定效果示例 · 请勿当作对真实消息的分析"
+            status = "本机核对完成 · 发送前请你再确认一遍"
             isWorking = false
             task = nil
             onResult?()

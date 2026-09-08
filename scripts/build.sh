@@ -37,6 +37,7 @@ xcrun swiftc \
 cp "$ROOT_DIR/Info.plist" "$CONTENTS_DIR/Info.plist"
 cp "$ROOT_DIR/Resources/LydiaLogo.png" "$RESOURCES_DIR/LydiaLogo.png"
 cp "$ROOT_DIR/Resources/AppIcon.icns" "$RESOURCES_DIR/AppIcon.icns"
+cp "$ROOT_DIR/Resources/别返工-独立开发者夜航桌面-v1.png" "$RESOURCES_DIR/别返工-独立开发者夜航桌面-v1.png"
 
 xattr -cr "$APP_DIR"
 xattr -d com.apple.FinderInfo "$APP_DIR" 2>/dev/null || true

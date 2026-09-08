@@ -347,13 +347,13 @@ struct ContentView: View {
             Label("接入真实分析能力", systemImage: "sparkles")
                 .font(.system(size: 16, weight: .bold))
                 .foregroundStyle(violet)
-            Text("这是开发验证设置。正式版会由产品服务调用，不让普通用户填 Key。")
+            Text("本机核对已经可用。连接 AI 后，可以处理更复杂、更口语化的客户消息。")
                 .font(.system(size: 11.5))
                 .foregroundStyle(.secondary)
             SecureField("智谱 API Key", text: $serviceKey)
                 .textFieldStyle(.roundedBorder)
             HStack {
-                Button("先看固定示例") {
+                Button("继续用本机核对") {
                     model.loadPreview()
                     showServiceSetup = false
                 }
@@ -383,7 +383,7 @@ struct ContentView: View {
                 Circle()
                     .fill(model.serviceConfigured ? Color.green : orange)
                     .frame(width: 7, height: 7)
-                Text(model.serviceConfigured ? "真实 AI 已连接" : "当前是固定效果原型")
+                Text(model.serviceConfigured ? "真实 AI 已连接" : "本机核对已就绪")
                 Spacer()
                 Button(model.serviceConfigured ? "重新连接" : "连接") {
                     showSettings = false
