@@ -5,7 +5,9 @@
 - 用户版本来源：`Info.plist` → `CFBundleShortVersionString`。
 - 当前目标：Apple Silicon、macOS 13 及以上。
 - `./scripts/build.sh` 生成本地 `.app`，当前使用 ad-hoc 签名，仅用于功能验证。
-- 当前工程没有配置公开下载仓库或远程源码仓库；不得借用「说人话」的发布通道。
+- 私有源码仓库：`https://github.com/lydiahub19921013/biefangong-app`。
+- 当前没有配置公开下载仓库；不得借用「说人话」的发布通道。
+- 私有仓库 CI 只执行测试、构建和签名校验，不自动创建公开版本或上传安装包。
 
 ## 本地验证
 

@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Run product tests
+        run: ./scripts/test.sh
+      - name: Build macOS app
+        run: ./scripts/build.sh
+      - name: Verify app identity and signature
+        run: |
+          APP_VERSION="$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' Info.plist)"
+          APP_PATH="build/v${APP_VERSION}/别返工.app"
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' "$APP_PATH/Contents/Info.plist")" = "com.lydiahub.biefangong"
+          test "$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$APP_PATH/Contents/Info.plist")" = "$APP_VERSION"
+          codesign --verify --deep --strict "$APP_PATH"
+      - name: Confirm generated files stay untracked
+        run: test -z "$(git status --short)"
